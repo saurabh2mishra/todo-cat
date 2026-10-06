@@ -270,22 +270,15 @@ body {
 }
 
 @media (max-width: 52rem) {
-  .lissie-page {
-    height: auto;
-    min-height: 100dvh;
-    overflow: visible;
-  }
-
   .lissie-main {
     flex-direction: column;
-    overflow: visible;
-    min-height: 24rem;
   }
 
   .todo-sidebar {
     flex: none;
+    max-height: 10rem;
     order: -1;
-    overflow-y: visible;
+    overflow-y: auto;
   }
 }
 
@@ -297,9 +290,5 @@ body {
 
   .lissie-page-header {
     align-items: center;
-  }
-
-  .lissie-main {
-    min-height: 20rem;
   }
 }
