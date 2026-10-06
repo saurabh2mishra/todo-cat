@@ -42,7 +42,8 @@ body {
   flex-direction: column;
   gap: 1.5rem;
   width: min(100%, 68rem);
-  min-height: 100dvh;
+  height: 100dvh;
+  overflow: hidden;
   margin-inline: auto;
   padding: 1.5rem 1rem 1rem;
 }
@@ -65,7 +66,8 @@ body {
   display: flex;
   flex: 1;
   gap: 1.5rem;
-  min-height: 32rem;
+  min-height: 0;
+  overflow: hidden;
 }
 
 .lissie-chat {
@@ -268,13 +270,22 @@ body {
 }
 
 @media (max-width: 52rem) {
+  .lissie-page {
+    height: auto;
+    min-height: 100dvh;
+    overflow: visible;
+  }
+
   .lissie-main {
     flex-direction: column;
+    overflow: visible;
+    min-height: 24rem;
   }
 
   .todo-sidebar {
     flex: none;
     order: -1;
+    overflow-y: visible;
   }
 }
 
@@ -288,7 +299,7 @@ body {
     align-items: center;
   }
 
-  .lissie-chat {
-    min-height: 28rem;
+  .lissie-main {
+    min-height: 20rem;
   }
 }
