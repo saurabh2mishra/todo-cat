@@ -29,9 +29,7 @@ export default async function Home() {
           </Button>
         </form>
       </header>
-      <section className="lissie-chat" aria-label="Chat with Lissie">
-        <LissieChat threadId={userId} />
-      </section>
+      <LissieChat threadId={userId} />
     </main>
   );
 }

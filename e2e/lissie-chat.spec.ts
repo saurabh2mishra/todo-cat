@@ -1,6 +1,8 @@
 import { expect, test } from "@playwright/test";
 
-test("@model Lissie replies in the user's list thread", async ({ page }) => {
+test("@model Lissie adds 'buy milk' and it appears in the sidebar", async ({
+  page,
+}) => {
   const email = `lissie-chat-${Date.now()}-${test.info().workerIndex}@example.com`;
 
   await page.goto("/");
@@ -11,16 +13,23 @@ test("@model Lissie replies in the user's list thread", async ({ page }) => {
   await page.getByRole("button", { name: "Create account" }).click();
   await expect(page).toHaveURL(/\/$/);
 
-  const runResponse = page.waitForResponse(
-    (response) =>
-      response.request().method() === "POST" &&
-      new URL(response.url()).pathname.endsWith("/agent/lissie/run"),
-  );
+  // Ask Lissie to add "buy milk"
   const input = page.getByRole("textbox").last();
-  await input.fill("I need to remember to buy milk.");
+  await input.fill("Please add 'buy milk' to my list.");
   await input.press("Enter");
 
-  const response = await runResponse;
-  expect(response.ok()).toBe(true);
-  expect(await response.text()).toContain("RUN_FINISHED");
+  // Wait for the agent run to finish
+  await page.waitForResponse(
+    (response) =>
+      response.request().method() === "POST" &&
+      new URL(response.url()).pathname.endsWith("/agent/lissie/run") &&
+      response.ok(),
+    { timeout: 60_000 },
+  );
+
+  // The sidebar should eventually show "buy milk" in the open section
+  const sidebar = page.getByRole("complementary", { name: "To-do list" });
+  await expect(sidebar.getByText("buy milk", { exact: false })).toBeVisible({
+    timeout: 15_000,
+  });
 });
