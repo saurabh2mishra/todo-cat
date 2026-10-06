@@ -29,7 +29,8 @@ export async function authorizeLissieRuntimeRoute(
 ): Promise<Response | null> {
   switch (route.method) {
     case "agent/run":
-    case "agent/connect": {
+    case "agent/connect":
+    case "agent/suggest": {
       if (route.agentId !== "lissie") return notFound();
 
       let body: unknown;
@@ -56,8 +57,20 @@ export async function authorizeLissieRuntimeRoute(
     case "threads/events":
     case "threads/state":
       return route.threadId === userId ? null : notFound();
+    case "threads/list":
+    case "threads/subscribe":
+    case "threads/clear":
+    case "memories/list":
+    case "memories/recall":
+    case "memories/subscribe":
+    case "memories/mutate":
     case "info":
     case "transcribe":
+    case "annotate":
+    case "cpk-debug-events":
+    case "inspector/metadata":
+    case "inspector/learning":
+    case "trajectory/connect":
       return null;
     default:
       return forbidden();

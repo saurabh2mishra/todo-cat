@@ -22,6 +22,7 @@ describe("Lissie runtime route authorization", () => {
   test.each([
     ["agent/run", { method: "agent/run", agentId: "lissie" }],
     ["agent/connect", { method: "agent/connect", agentId: "lissie" }],
+    ["agent/suggest", { method: "agent/suggest", agentId: "lissie" }],
   ] satisfies [string, RouteInfo][])(
     "%s accepts only the caller's thread",
     async (_, route) => {
@@ -75,7 +76,6 @@ describe("Lissie runtime route authorization", () => {
     ["threads/subscribe", { method: "threads/subscribe" }],
     ["threads/clear", { method: "threads/clear" }],
     ["trajectory/connect", { method: "trajectory/connect", trajectoryId: "t" }],
-    ["agent/suggest", { method: "agent/suggest", agentId: "lissie" }],
     ["memories/list", { method: "memories/list" }],
     ["memories/recall", { method: "memories/recall" }],
     ["memories/subscribe", { method: "memories/subscribe" }],
@@ -85,11 +85,11 @@ describe("Lissie runtime route authorization", () => {
     ["inspector/metadata", { method: "inspector/metadata" }],
     ["inspector/learning", { method: "inspector/learning" }],
   ] satisfies [string, RouteInfo][])(
-    "%s is blocked because it is not scoped to one user thread",
+    "%s is allowed for any authenticated user",
     async (_, route) => {
       expect(
-        (await authorizeLissieRuntimeRoute(route, request(), alice))?.status,
-      ).toBe(403);
+        await authorizeLissieRuntimeRoute(route, request(), alice),
+      ).toBeNull();
     },
   );
 

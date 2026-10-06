@@ -8,7 +8,7 @@ import {
 } from "@copilotkit/react-core/v2";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { z } from "zod";
-import { TodoSidebar } from "./todo-sidebar";
+import { TodoPanel } from "./todo-panel";
 
 // Renders a single tool-call line and fires onComplete once when the call finishes.
 function ToolLine({
@@ -110,7 +110,7 @@ function LissieChatInner({
           />
         </CopilotChatConfigurationProvider>
       </section>
-      <TodoSidebar key={refreshKey} />
+      <TodoPanel key={refreshKey} />
     </div>
   );
 }

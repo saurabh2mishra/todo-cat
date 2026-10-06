@@ -15,7 +15,7 @@ export function TextField({ label, name, ...props }: TextFieldProps) {
       <input
         id={name}
         name={name}
-        className="h-11 w-full rounded-lg border border-line bg-background px-3 text-base outline-accent transition-colors focus-visible:border-foreground focus-visible:outline-2 focus-visible:outline-offset-2"
+        className="h-10 w-full rounded-lg border border-line bg-background px-3 text-sm outline-accent transition-colors focus-visible:border-foreground focus-visible:outline-2 focus-visible:outline-offset-2"
         {...props}
       />
     </div>
