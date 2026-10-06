@@ -72,6 +72,130 @@ body {
   min-height: inherit;
 }
 
+.lissie-chat [data-copilotkit] {
+  color-scheme: light;
+  --background: #ffffff;
+  --foreground: #171717;
+  --card: #ffffff;
+  --card-foreground: #171717;
+  --popover: #ffffff;
+  --popover-foreground: #171717;
+  --primary: #171717;
+  --primary-foreground: #ffffff;
+  --secondary: #f2f1f5;
+  --secondary-foreground: #25222c;
+  --muted: #f2f1f5;
+  --muted-foreground: #5f5b6b;
+  --accent: #f2b705;
+  --accent-foreground: #171717;
+  --destructive: #b42318;
+  --destructive-foreground: #ffffff;
+  --border: #d4d1dc;
+  --input: #d4d1dc;
+  --ring: #a87800;
+}
+
+@media (prefers-color-scheme: dark) {
+  .lissie-chat [data-copilotkit] {
+    color-scheme: dark;
+    --background: #1a1721;
+    --foreground: #f5f1fa;
+    --card: #272230;
+    --card-foreground: #f5f1fa;
+    --popover: #272230;
+    --popover-foreground: #f5f1fa;
+    --primary: #f2b705;
+    --primary-foreground: #1a1721;
+    --secondary: #393144;
+    --secondary-foreground: #f5f1fa;
+    --muted: #302938;
+    --muted-foreground: #c8bfd3;
+    --accent: #473b53;
+    --accent-foreground: #f5f1fa;
+    --destructive: #ff8177;
+    --destructive-foreground: #24100e;
+    --border: #51465d;
+    --input: #51465d;
+    --ring: #f2b705;
+  }
+}
+
+.lissie-chat [data-copilotkit] .copilotKitChat,
+.lissie-chat [data-copilotkit] .copilotKitMessages {
+  color: var(--foreground);
+  background-color: var(--background);
+}
+
+.lissie-chat [data-copilotkit] .copilotKitAssistantMessage {
+  color: var(--card-foreground);
+  background-color: var(--card);
+}
+
+.lissie-chat [data-copilotkit] .copilotKitAssistantMessage [class*="prose"],
+.lissie-chat [data-copilotkit] .copilotKitUserMessage [class*="prose"] {
+  color: var(--foreground);
+  --tw-prose-body: var(--foreground);
+  --tw-prose-headings: var(--foreground);
+  --tw-prose-lead: var(--foreground);
+  --tw-prose-bold: var(--foreground);
+  --tw-prose-counters: var(--muted-foreground);
+  --tw-prose-bullets: var(--muted-foreground);
+  --tw-prose-links: var(--primary);
+  --tw-prose-quotes: var(--foreground);
+  --tw-prose-quote-borders: var(--border);
+  --tw-prose-captions: var(--muted-foreground);
+  --tw-prose-code: var(--foreground);
+  --tw-prose-pre-code: var(--foreground);
+  --tw-prose-pre-bg: var(--muted);
+  --tw-prose-th-borders: var(--border);
+  --tw-prose-td-borders: var(--border);
+}
+
+.lissie-chat [data-copilotkit] .copilotKitUserMessage [class*="bg-muted"] {
+  color: var(--secondary-foreground);
+  background-color: var(--secondary);
+}
+
+.lissie-chat [data-copilotkit] .copilotKitInput {
+  color: var(--card-foreground);
+  background-color: var(--card);
+  border: 1px solid var(--input);
+}
+
+.lissie-chat [data-copilotkit] .copilotKitInput textarea {
+  color: var(--foreground);
+  caret-color: var(--primary);
+}
+
+.lissie-chat [data-copilotkit] .copilotKitInput textarea::placeholder {
+  color: var(--muted-foreground);
+  opacity: 1;
+}
+
+.lissie-chat [data-copilotkit] .copilotKitInput button {
+  color: var(--muted-foreground);
+}
+
+.lissie-chat [data-copilotkit] .copilotKitInput button[class*="bg-black"] {
+  color: var(--primary-foreground);
+  background-color: var(--primary);
+}
+
+.lissie-chat [data-copilotkit] .copilotKitInput button:disabled {
+  color: var(--muted-foreground);
+  background-color: var(--muted);
+  opacity: 1;
+}
+
+.lissie-chat [data-copilotkit] .copilotKitMessage button {
+  color: var(--muted-foreground);
+}
+
+.lissie-chat [data-copilotkit] button:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
 @media (max-width: 36rem) {
   .lissie-page {
     gap: 1rem;
