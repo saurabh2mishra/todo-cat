@@ -83,6 +83,7 @@ Index:
 - [workspaces.md](tech-docs/workspaces.md) — the npm workspace layout and why it exists before its content does.
 - [testing.md](tech-docs/testing.md) — Vitest and Playwright setup, test conventions, the e2e server's isolation, the QA script and CI.
 - [database.md](tech-docs/database.md) — Drizzle on SQLite: the single `lib/db.ts` connection, the migration workflow, test databases and v1 gotchas.
+- [agent.md](tech-docs/agent.md) — Lissie's Mastra agent, SQLite memory, OpenRouter configuration, and CopilotKit runtime authorization.
 - [rest-api.md](tech-docs/rest-api.md) — the `/api/todos` endpoints, their schemas and status codes, the OpenAPI document and its regeneration, and how to get a bearer token with curl.
 - [auth.md](tech-docs/auth.md) — Better Auth: config layout, the `getUserId` helper every adapter uses, server-action forms, schema generation and test setup.
 - [cli.md](tech-docs/cli.md) — the `todo-cat` CLI: commands, agent-friendly output and exit codes, device-flow login, credentials, the build, its end-to-end test, and the `todo-cat-cli` agent skill.

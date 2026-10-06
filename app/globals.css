@@ -35,3 +35,54 @@ body {
   background: var(--background);
   color: var(--foreground);
 }
+
+.lissie-page {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: min(100%, 68rem);
+  min-height: 100dvh;
+  margin-inline: auto;
+  padding: 1.5rem 1rem 1rem;
+}
+
+.lissie-page-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 1.25rem;
+}
+
+.lissie-page-header form {
+  flex: none;
+  padding-top: 0.25rem;
+}
+
+.lissie-chat {
+  flex: 1;
+  min-height: 32rem;
+  overflow: hidden;
+}
+
+.lissie-chat > div {
+  height: 100%;
+  min-height: inherit;
+}
+
+@media (max-width: 36rem) {
+  .lissie-page {
+    gap: 1rem;
+    padding: 1rem 0.75rem 0.75rem;
+  }
+
+  .lissie-page-header {
+    align-items: center;
+  }
+
+  .lissie-chat {
+    min-height: 28rem;
+  }
+}

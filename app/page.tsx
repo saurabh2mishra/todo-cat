@@ -1,9 +1,9 @@
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { signOut } from "@/app/auth-actions";
+import { LissieChat } from "@/components/lissie-chat";
 import { Button } from "@/components/ui/button";
 import { PageHeader } from "@/components/ui/page-header";
-import { Shell } from "@/components/ui/shell";
 import { db } from "@/lib/db";
 import { getUserId } from "@/lib/session";
 
@@ -18,15 +18,20 @@ export default async function Home() {
   if (!user) redirect("/login");
 
   return (
-    <Shell>
-      <PageHeader title={`Hi, ${user.name}`}>
-        Lissie is guarding your list. There is nothing on it yet.
-      </PageHeader>
-      <form action={signOut}>
-        <Button type="submit" variant="secondary">
-          Sign out
-        </Button>
-      </form>
-    </Shell>
+    <main className="lissie-page">
+      <header className="lissie-page-header">
+        <PageHeader title={`Hi, ${user.name}`}>
+          Your list is under Lissie's supervision.
+        </PageHeader>
+        <form action={signOut}>
+          <Button type="submit" variant="secondary">
+            Sign out
+          </Button>
+        </form>
+      </header>
+      <section className="lissie-chat" aria-label="Chat with Lissie">
+        <LissieChat threadId={userId} />
+      </section>
+    </main>
   );
 }
